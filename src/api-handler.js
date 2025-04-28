@@ -21,7 +21,7 @@
 // Conditions
 // Description
 
-const key = "RSEN5BMDJKBLYVKZ9SXAY5EV8";
+const key = "RSEN5BMDJKBLYVKZ9SXAY5EV8<REMOVE THIS PART>";
 
 export default async function getWeatherData(location) {
   try {

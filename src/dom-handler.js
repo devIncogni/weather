@@ -1,3 +1,4 @@
+import getWeatherData from "./api-handler";
 import CurrentWeather from "./CurrentWeather";
 import MoreDetails from "./CurrentWeatherMoreDetails";
 import WeekDayToDay from "./DayToDay";
@@ -30,9 +31,38 @@ const days = {
 };
 
 const weatherDomHandler = (() => {
+  const processWeatherData = async (location) => {
+    const totalWeatherData = await getWeatherData(location);
 
-    
-  const setCurrentTemp = (temperature) => {};
+    const {
+      latitude,
+      longitude,
+      resolvedAddress,
+      description,
+      currentConditions,
+      alerts,
+    } = totalWeatherData;
+
+    const dayData = [];
+
+    for (let index = 0; index < 6; index += 1) {
+      const currentDay = totalWeatherData.days[index];
+      const { datetimeepoch, tempmin, tempmax, conditions } = currentDay;
+      dayData.push({ datetimeepoch, tempmin, tempmax, conditions });
+    }
+
+    return {
+      latitude,
+      longitude,
+      resolvedAddress,
+      description,
+      currentConditions,
+      alerts,
+      dayData,
+    };
+  };
+
+  return { processWeatherData };
 })();
 
 export default weatherDomHandler;
