@@ -30,39 +30,6 @@ const days = {
   6: new WeekDayToDay(),
 };
 
-const weatherDomHandler = (() => {
-  const processWeatherData = async (location) => {
-    const totalWeatherData = await getWeatherData(location);
-
-    const {
-      latitude,
-      longitude,
-      resolvedAddress,
-      description,
-      currentConditions,
-      alerts,
-    } = totalWeatherData;
-
-    const dayData = [];
-
-    for (let index = 0; index < 6; index += 1) {
-      const currentDay = totalWeatherData.days[index];
-      const { datetimeepoch, tempmin, tempmax, conditions } = currentDay;
-      dayData.push({ datetimeepoch, tempmin, tempmax, conditions });
-    }
-
-    return {
-      latitude,
-      longitude,
-      resolvedAddress,
-      description,
-      currentConditions,
-      alerts,
-      dayData,
-    };
-  };
-
-  return { processWeatherData };
-})();
+const weatherDomHandler = (() => {})();
 
 export default weatherDomHandler;
