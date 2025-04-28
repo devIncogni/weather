@@ -3,6 +3,8 @@
 // CSS Imports
 import "./styles.css";
 import "./default-reset.css";
+import { format, fromUnixTime } from "date-fns";
+
 
 // JS Imports
 // import getWeatherData from "./api-handler";
@@ -5810,4 +5812,4 @@ const testObj = JSON.parse(`{
 }
 `);
 
-console.log(testObj);
+console.log(format(fromUnixTime(1745773200), "iii dd MMM HH:mm"));

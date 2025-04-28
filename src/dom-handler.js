@@ -1,5 +1,6 @@
 import CurrentWeather from "./CurrentWeather";
 import MoreDetails from "./CurrentWeatherMoreDetails";
+import WeekDayToDay from "./DayToDay";
 import TodayHourToHour from "./TodayHourToHour";
 import WeatherHomePage from "./WeatherHomePage";
 
@@ -18,7 +19,19 @@ const hour = {
   21: new TodayHourToHour(),
 };
 
+const days = {
+  0: new WeekDayToDay(),
+  1: new WeekDayToDay(),
+  2: new WeekDayToDay(),
+  3: new WeekDayToDay(),
+  4: new WeekDayToDay(),
+  5: new WeekDayToDay(),
+  6: new WeekDayToDay(),
+};
+
 const weatherDomHandler = (() => {
+
+    
   const setCurrentTemp = (temperature) => {};
 })();
 
