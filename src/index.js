@@ -5,10 +5,10 @@ import "./styles.css";
 import "./default-reset.css";
 import { format, fromUnixTime } from "date-fns";
 
-
 // JS Imports
 // import getWeatherData from "./api-handler";
 // import pubsub from "./pub-sub";
+// import "./dom-handler";
 
 const testObj = JSON.parse(`{
     "queryCost": 1,

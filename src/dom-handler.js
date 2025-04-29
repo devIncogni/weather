@@ -1,4 +1,4 @@
-import getWeatherData from "./api-handler";
+import getProcessedWeatherData from "./api-handler";
 import CurrentWeather from "./CurrentWeather";
 import MoreDetails from "./CurrentWeatherMoreDetails";
 import WeekDayToDay from "./DayToDay";
@@ -30,6 +30,14 @@ const days = {
   6: new WeekDayToDay(),
 };
 
-const weatherDomHandler = (() => {})();
+// let processedWeatherData;
+// getProcessedWeatherData("Lucknow").then((data) => {
+//   processedWeatherData = data;
+//   console.log(processedWeatherData);
+// });
+
+const weatherDomHandler = (async () => {
+  const processedWeatherData = await getProcessedWeatherData("Lucknow");
+})();
 
 export default weatherDomHandler;

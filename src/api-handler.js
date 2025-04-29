@@ -21,12 +21,12 @@
 // Conditions
 // Description
 
-const key = "RSEN5BMDJKBLYVKZ9SXAY5EV8<REMOVE THIS PART>";
+const key = "RSEN5BMDJKBLYVKZ9SXAY5EV8<>";
 
 async function getWeatherData(location) {
   try {
     const response = await fetch(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&elements=datetime%2Cname%2Caddress%2CresolvedAddress%2Clatitude%2Clongitude%2Ctempmax%2Ctempmin%2Ctemp%2Cfeelslike%2Chumidity%2Cprecipprob%2Cpreciptype%2Cwindspeed%2Cwinddir%2Cpressure%2Cvisibility%2Csunrise%2Csunset%2Cconditions%2Cdescription%2Cicon&include=current%2Calerts%2Cdays%2Chours%2Cevents%2Cobs%2Cremote%2Cfcst&key=${key}&contentType=json`,
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&elements=datetime%2CdatetimeEpoch%2Cname%2Caddress%2CresolvedAddress%2Clatitude%2Clongitude%2Ctempmax%2Ctempmin%2Ctemp%2Cfeelslike%2Chumidity%2Cprecipprob%2Cpreciptype%2Cwindspeed%2Cwinddir%2Cpressure%2Cvisibility%2Csunrise%2Csunset%2Cconditions%2Cdescription%2Cicon&include=current%2Calerts%2Cdays%2Chours%2Cevents%2Cobs%2Cremote%2Cfcst&key=${key}&contentType=json`,
       {
         mode: "cors",
         method: "GET",
@@ -41,33 +41,38 @@ async function getWeatherData(location) {
   }
 }
 
-export default async function processWeatherData(location) {
+export default async function getProcessedWeatherData(location) {
   const totalWeatherData = await getWeatherData(location);
 
-  const {
-    latitude,
-    longitude,
-    resolvedAddress,
-    description,
-    currentConditions,
-    alerts,
-  } = totalWeatherData;
+  try {
+    const {
+      latitude,
+      longitude,
+      resolvedAddress,
+      description,
+      currentConditions,
+      alerts,
+    } = totalWeatherData;
 
-  const dayData = [];
+    const dayData = [];
 
-  for (let index = 0; index < 6; index += 1) {
-    const currentDay = totalWeatherData.days[index];
-    const { datetimeepoch, tempmin, tempmax, conditions } = currentDay;
-    dayData.push({ datetimeepoch, tempmin, tempmax, conditions });
+    for (let index = 0; index < 7; index += 1) {
+      const currentDay = totalWeatherData.days[index];
+      const { datetimeEpoch, tempmin, tempmax, conditions } = currentDay;
+      dayData.push({ datetimeEpoch, tempmin, tempmax, conditions });
+    }
+
+    return {
+      latitude,
+      longitude,
+      resolvedAddress,
+      description,
+      currentConditions,
+      alerts,
+      dayData,
+    };
+  } catch (error) {
+    console.error(error);
+    return null;
   }
-
-  return {
-    latitude,
-    longitude,
-    resolvedAddress,
-    description,
-    currentConditions,
-    alerts,
-    dayData,
-  };
 }
