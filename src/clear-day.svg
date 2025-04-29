@@ -4,9 +4,9 @@
    version="1.1"
    id="svg1"
    sodipodi:docname="clear-day.svg"
-   inkscape:version="1.4.1 (93de688d07, 2025-03-30)"
    width="375"
    height="375"
+   inkscape:version="1.4.1 (93de688d07, 2025-03-30)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -22,7 +22,7 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="1.015625"
-     inkscape:cx="255.50769"
+     inkscape:cx="256"
      inkscape:cy="256"
      inkscape:window-width="1366"
      inkscape:window-height="689"
@@ -51,7 +51,15 @@
          stroke-miterlimit="10"
          stroke-width="15"
          d="M 187.5,57.2 V 7.5 m 0,360 v -49.7 m 92.2,-222.5 35,-35 M 60.3,314.7 95.4,279.6 m 0,-184.4 -35,-35 M 314.9,314.7 279.8,279.6 M 57.2,187.5 H 7.5 m 360,0 h -49.7"
-         id="path1" />
+         id="path1">
+        <animateTransform
+           additive="sum"
+           attributeName="transform"
+           dur="6s"
+           repeatCount="indefinite"
+           type="rotate"
+           values="0 187.5 187.5; 45 187.5 187.5" />
+      </path>
     </symbol>
   </defs>
   <use
