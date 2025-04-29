@@ -1,0 +1,126 @@
+#today-forecast {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1.65fr 1fr 5fr;
+    gap: 2rem;
+}
+
+/* #region Icon and sunrise sunset styles */
+
+#icon-and-sunrise-sunset {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.current-weather-icon {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.current-weather-icon>img {
+    width: 5rem;
+    /* min-width: 5rem; */
+}
+
+.sunrise,
+.sunset {
+    /* grid-row: 3/4; */
+    font-size: 0.5rem;
+}
+
+/* #endregion Icon and sunrise sunset styles */
+
+/* #region Current temperature styles */
+
+.current-temperature {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.temperature {
+    font-size: 3rem;
+    /* color: yellow; */
+    font-weight: bold;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    /* align-self: center; */
+}
+
+.feels-like {
+    font-size: 0.75rem;
+}
+
+.description {
+    font-size: 0.5rem;
+}
+
+/* #endregion Current temperature styles */
+
+/* #region More details styles */
+.more-details {
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.25rem;
+}
+
+.more-details>.title {
+    font-size: 1rem;
+    /* margin-bottom: 1rem; */
+    flex: 1;
+}
+
+/* #endregion More details styles */
+
+/* #region Hour to hour styles */
+.hour-to-hour {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: auto 1fr;
+
+    grid-column: -1/-2;
+}
+
+.hour {
+    grid-row: 2/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin: 0.5rem 0 0 0;
+}
+
+.hour-icon>img {
+    width: 2.5rem;
+}
+
+.time-description {
+    grid-row: 1/2;
+    font-size: 0.65rem;
+}
+
+.night {
+    grid-column: 1/3;
+}
+
+.morning {
+    grid-column: 3/5;
+}
+
+.day-time {
+    grid-column: 5/7;
+}
+
+.evening {
+    grid-column: 7/9;
+}
+
+.time-in-hrs {
+    font-size: 0.75rem;
+}
+
+/* #endregion Hour to hour styles */

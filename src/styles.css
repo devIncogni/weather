@@ -4,34 +4,21 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-/* 
+    /* 
     background: url("./cloudy-weather.jpg");
     background-size: 0%;
     background-repeat: no-repeat; */
 }
 
-#header {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-
-    padding: 2rem;
-
-    font-size: 0.9rem;
-
-    user-select: none;
-}
-
-#logo {
-    font-size: 1.35rem;
-}
-
-#address {
-    font-weight: bolder;
-    
-}
-
 #main-content {
     border: 1px solid black;
-    /* height: 5rem; */
+    min-height: 5rem;
+
+    display: grid;
+    grid-template-rows: auto auto;
+    align-self: center;
+    width: 100%;
+    gap: 3rem;
+
+    padding: 2rem 5rem 3rem 5rem;
 }
