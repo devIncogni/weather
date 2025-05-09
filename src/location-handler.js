@@ -44,6 +44,13 @@ const dialogHandler = (async () => {
     return { currentLocation };
   });
 
+  const submitLocationButton = document.querySelector("#submit-dialog-form");
+  submitLocationButton.addEventListener(`click`, () => {
+    currentLocation = cityInput.value || currentLocation;
+    dialog.close();
+    cityInput.value = "";
+  });
+
   return { currentLocation };
 })();
 
