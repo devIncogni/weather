@@ -13,7 +13,12 @@ const currentWeather = new CurrentWeather(
   document.querySelector(".current-temperature .feels-like-data"),
   document.querySelector(".current-temperature .description")
 );
-const moreDetails = new MoreDetails();
+const moreDetails = new MoreDetails(
+  document.querySelector(".more-details .wind-speed .more-details-data"),
+  document.querySelector(".more-details .humidity .more-details-data"),
+  document.querySelector(".more-details .pressure .more-details-data"),
+  document.querySelector(".more-details .precipitation .more-details-data")
+);
 const weatherHomePage = new WeatherHomePage();
 
 const hour = {
@@ -48,12 +53,23 @@ const weatherDomHandler = (async () => {
     (await locationHandler).currentLocation
   );
 
+  // #region current weather settings
   currentWeather.setDateTime(
     processedWeatherData.currentConditions.datetimeEpoch
   );
   currentWeather.setTemp(processedWeatherData.currentConditions.temp);
   currentWeather.setFeelsLike(processedWeatherData.currentConditions.feelslike);
   currentWeather.setDescription(processedWeatherData.description);
+  // #endregion current weather settings
+
+  // #region current weather more details settings
+  moreDetails.setWindSpeed(processedWeatherData.currentConditions.windspeed);
+  moreDetails.setHumidity(processedWeatherData.currentConditions.humidity);
+  moreDetails.setPressure(processedWeatherData.currentConditions.pressure);
+  moreDetails.setPrecipitationProbability(
+    processedWeatherData.currentConditions.precipprob
+  );
+  // #endregion current weather more details settings
 })();
 
 export default weatherDomHandler;

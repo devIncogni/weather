@@ -22,12 +22,12 @@ export default class CurrentWeather {
 
   setTemp(temp) {
     const temperatureString = temp >= 0 ? `+${temp}` : `-${temp}`;
-    this.tempDisplay.textContent = temperatureString;
+    this.tempDisplay.textContent = `${temperatureString}°C`;
   }
 
   setFeelsLike(temp) {
     const temperatureString = temp >= 0 ? `+${temp}` : `-${temp}`;
-    this.feelsLikeDisplay.textContent = temperatureString;
+    this.feelsLikeDisplay.textContent = `${temperatureString}°C`;
   }
 
   setDescription(description) {
