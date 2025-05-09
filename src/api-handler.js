@@ -58,8 +58,8 @@ export default async function getProcessedWeatherData(location) {
 
     for (let index = 0; index < 7; index += 1) {
       const currentDay = totalWeatherData.days[index];
-      const { datetimeEpoch, tempmin, tempmax, conditions } = currentDay;
-      dayData.push({ datetimeEpoch, tempmin, tempmax, conditions });
+      const { datetimeEpoch, tempmin, tempmax, conditions, icon } = currentDay;
+      dayData.push({ datetimeEpoch, tempmin, tempmax, conditions, icon });
     }
 
     return {
