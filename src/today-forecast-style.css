@@ -26,7 +26,7 @@
 .sunrise,
 .sunset {
     /* grid-row: 3/4; */
-    font-size: 0.5rem;
+    font-size: 0.65rem;
 }
 
 /* #endregion Icon and sunrise sunset styles */
@@ -39,10 +39,15 @@
     justify-content: flex-end;
 }
 
+.current-temperature .date-time {
+    font-weight: 600;
+}
+
 .temperature {
-    font-size: 3.5rem;
+    font-size: 5rem;
+    letter-spacing: -3px;
     /* color: yellow; */
-    font-weight: bold;
+    font-weight: 500;
     flex: 1;
     display: flex;
     align-items: center;
@@ -52,10 +57,11 @@
 
 .feels-like {
     /* font-size: 0.75rem; */
+    font-weight: 500;
 }
 
 .description {
-    font-size: 0.5rem;
+    font-size: 0.65rem;
 }
 
 /* #endregion Current temperature styles */
@@ -73,6 +79,11 @@
     font-size: 1rem;
     /* margin-bottom: 1rem; */
     flex: 1;
+    font-weight: 500;
+}
+
+.more-details .more-details-data {
+    font-weight: 600;
 }
 
 /* #endregion More details styles */
@@ -123,6 +134,10 @@
 
 .time-in-hrs {
     font-size: 0.75rem;
+}
+
+.day-avg-temperature {
+    font-weight: 600;
 }
 
 /* #endregion Hour to hour styles */

@@ -1,8 +1,9 @@
 #header {
     display: flex;
     gap: 2rem;
-    align-items: center;
+    align-items: baseline;
 
+    line-height: 1;
     padding: 2rem;
 
     font-size: 0.9rem;
@@ -11,10 +12,10 @@
 }
 
 #logo {
-    font-size: 1.35rem;
+    font-size: 2rem;
 }
 
 #address {
     font-weight: bolder;
-
+    cursor: pointer;
 }
