@@ -7,11 +7,11 @@ import WeatherHomePage from "./WeatherHomePage";
 import locationHandler from "./location-handler";
 
 const currentWeather = new CurrentWeather(
-  document.querySelector(".current-temperature date-time"),
-  document.querySelector("current-temperature temperature"),
-  document.querySelector("icon-and-sunrise-sunset current-weather-icon"),
-  document.querySelector("current-temperature feels-like"),
-  document.querySelector("current-temperature description")
+  document.querySelector(".current-temperature .date-time"),
+  document.querySelector(".current-temperature .temperature"),
+  document.querySelector(".icon-and-sunrise-sunset .current-weather-icon"),
+  document.querySelector(".current-temperature .feels-like-data"),
+  document.querySelector(".current-temperature .description")
 );
 const moreDetails = new MoreDetails();
 const weatherHomePage = new WeatherHomePage();
@@ -44,8 +44,16 @@ const days = {
 // });
 
 const weatherDomHandler = (async () => {
-  const processedWeatherData = await getProcessedWeatherData((await locationHandler).currentLocation);
+  const processedWeatherData = await getProcessedWeatherData(
+    (await locationHandler).currentLocation
+  );
 
+  currentWeather.setDateTime(
+    processedWeatherData.currentConditions.datetimeEpoch
+  );
+  currentWeather.setTemp(processedWeatherData.currentConditions.temp);
+  currentWeather.setFeelsLike(processedWeatherData.currentConditions.feelslike);
+  currentWeather.setDescription(processedWeatherData.description);
 })();
 
 export default weatherDomHandler;

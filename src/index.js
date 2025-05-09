@@ -9,6 +9,7 @@ import "./seven-day-forecast-style.css";
 import { format, fromUnixTime } from "date-fns";
 
 // JS Imports
+import "./dom-handler";
 
 const testObj = JSON.parse(`{
     "queryCost": 1,

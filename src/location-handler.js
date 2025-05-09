@@ -11,23 +11,23 @@ async function getLocation() {
   });
 }
 
-async function getGeoLocation() {
-  let currentLocation = "";
-  if (!navigator.geolocation) {
-    console.log("Geolocation is not supported by your browser");
-  } else {
-    try {
-      const { latitude, longitude } = await getLocation();
-      currentLocation = `${latitude}%2C${longitude}`;
-    } catch (error) {
-      console.error("Error getting location:", error);
-      currentLocation = "Lucknow";
-    }
-  }
-  return currentLocation;
-}
-
 const locationHandler = (async () => {
+  async function getGeoLocation() {
+    let currentLocation = "";
+    if (!navigator.geolocation) {
+      console.log("Geolocation is not supported by your browser");
+    } else {
+      try {
+        const { latitude, longitude } = await getLocation();
+        currentLocation = `${latitude}%2C${longitude}`;
+      } catch (error) {
+        console.error("Error getting location:", error);
+        currentLocation = "Lucknow";
+      }
+    }
+    return currentLocation;
+  }
+
   let currentLocation = await getGeoLocation();
 
   const dialog = document.querySelector("dialog");
@@ -45,7 +45,6 @@ const locationHandler = (async () => {
       dialog.close();
       cityInput.value = "";
     }
-    return { currentLocation };
   });
 
   submitLocationButton.addEventListener(`click`, () => {
@@ -54,7 +53,7 @@ const locationHandler = (async () => {
     cityInput.value = "";
   });
 
-  return { currentLocation };
+  return { currentLocation, getGeoLocation };
 })();
 
 export default locationHandler;
