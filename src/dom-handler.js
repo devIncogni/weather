@@ -4,8 +4,15 @@ import MoreDetails from "./CurrentWeatherMoreDetails";
 import WeekDayToDay from "./DayToDay";
 import TodayHourToHour from "./TodayHourToHour";
 import WeatherHomePage from "./WeatherHomePage";
+import locationHandler from "./location-handler";
 
-const currentWeather = new CurrentWeather();
+const currentWeather = new CurrentWeather(
+  document.querySelector(".current-temperature date-time"),
+  document.querySelector("current-temperature temperature"),
+  document.querySelector("icon-and-sunrise-sunset current-weather-icon"),
+  document.querySelector("current-temperature feels-like"),
+  document.querySelector("current-temperature description")
+);
 const moreDetails = new MoreDetails();
 const weatherHomePage = new WeatherHomePage();
 
@@ -37,7 +44,8 @@ const days = {
 // });
 
 const weatherDomHandler = (async () => {
-  const processedWeatherData = await getProcessedWeatherData("Lucknow");
+  const processedWeatherData = await getProcessedWeatherData((await locationHandler).currentLocation);
+
 })();
 
 export default weatherDomHandler;

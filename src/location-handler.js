@@ -1,19 +1,18 @@
-const dialogHandler = (async () => {
+async function getLocation() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        resolve(position.coords);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+async function getGeoLocation() {
   let currentLocation = "";
-
-  async function getLocation() {
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          resolve(position.coords);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
-    });
-  }
-
   if (!navigator.geolocation) {
     console.log("Geolocation is not supported by your browser");
   } else {
@@ -25,26 +24,30 @@ const dialogHandler = (async () => {
       currentLocation = "Lucknow";
     }
   }
+  return currentLocation;
+}
+
+const locationHandler = (async () => {
+  let currentLocation = await getGeoLocation();
 
   const dialog = document.querySelector("dialog");
   const addressClickable = document.querySelector("#location>#address");
+  const cityInput = document.querySelector("dialog #city");
+  const submitLocationButton = document.querySelector("#submit-dialog-form");
 
   addressClickable.addEventListener("click", () => {
     dialog.showModal();
   });
 
-  const cityInput = document.querySelector("dialog #city");
   cityInput.addEventListener(`keydown`, (e) => {
     if (e.key === "Enter") {
       currentLocation = cityInput.value;
       dialog.close();
       cityInput.value = "";
     }
-
     return { currentLocation };
   });
 
-  const submitLocationButton = document.querySelector("#submit-dialog-form");
   submitLocationButton.addEventListener(`click`, () => {
     currentLocation = cityInput.value || currentLocation;
     dialog.close();
@@ -54,4 +57,4 @@ const dialogHandler = (async () => {
   return { currentLocation };
 })();
 
-export default dialogHandler;
+export default locationHandler;
