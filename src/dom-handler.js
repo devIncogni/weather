@@ -22,14 +22,38 @@ const moreDetails = new MoreDetails(
 const weatherHomePage = new WeatherHomePage();
 
 const hour = {
-  0: new TodayHourToHour(),
-  3: new TodayHourToHour(),
-  6: new TodayHourToHour(),
-  9: new TodayHourToHour(),
-  12: new TodayHourToHour(),
-  15: new TodayHourToHour(),
-  18: new TodayHourToHour(),
-  21: new TodayHourToHour(),
+  0: new TodayHourToHour(
+    document.querySelector(".hour-0 .hour-icon img"),
+    document.querySelector(".hour-0 .day-avg-temperature")
+  ),
+  3: new TodayHourToHour(
+    document.querySelector(".hour-3 .hour-icon img"),
+    document.querySelector(".hour-3 .day-avg-temperature")
+  ),
+  6: new TodayHourToHour(
+    document.querySelector(".hour-6 .hour-icon img"),
+    document.querySelector(".hour-6 .day-avg-temperature")
+  ),
+  9: new TodayHourToHour(
+    document.querySelector(".hour-9 .hour-icon img"),
+    document.querySelector(".hour-9 .day-avg-temperature")
+  ),
+  12: new TodayHourToHour(
+    document.querySelector(".hour-12 .hour-icon img"),
+    document.querySelector(".hour-12 .day-avg-temperature")
+  ),
+  15: new TodayHourToHour(
+    document.querySelector(".hour-15 .hour-icon img"),
+    document.querySelector(".hour-15 .day-avg-temperature")
+  ),
+  18: new TodayHourToHour(
+    document.querySelector(".hour-18 .hour-icon img"),
+    document.querySelector(".hour-18 .day-avg-temperature")
+  ),
+  21: new TodayHourToHour(
+    document.querySelector(".hour-21 .hour-icon img"),
+    document.querySelector(".hour-21 .day-avg-temperature")
+  ),
 };
 
 const days = {
@@ -70,6 +94,16 @@ const weatherDomHandler = (async () => {
     processedWeatherData.currentConditions.precipprob
   );
   // #endregion current weather more details settings
+
+  // #region current weather hour to hour settings
+  const hourToHourKeys = Object.keys(hour);
+  hourToHourKeys.forEach((key) => {
+    const currentHour = hour[key];
+    const { temp } = processedWeatherData.dayData[0].hours[key / 3];
+    
+    currentHour.setTemperature(temp);
+  });
+  // #endregion current weather hour to hour settings
 })();
 
 export default weatherDomHandler;
