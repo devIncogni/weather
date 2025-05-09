@@ -8,9 +8,10 @@ body {
     justify-content: space-between;
 
     font-family: "Roboto Condensed", sans-serif;
-    /* 
-    background: url("./cloudy-weather.jpg");
-    background-size: 0%;
+    /* color: white; */
+    /*     
+    background: url("./cloudy-weataher.jpg");
+    background-size: 100%;
     background-repeat: no-repeat; */
 }
 
@@ -25,4 +26,21 @@ body {
     gap: 3rem;
 
     padding: 2rem 5rem 3rem 5rem;
+}
+
+.acrylic {
+    background: rgba(0, 0, 0, 0.531);
+    backdrop-filter: blur(7px);
+}
+
+dialog {
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(7px);
 }

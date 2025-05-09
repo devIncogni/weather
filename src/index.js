@@ -13,6 +13,13 @@ import { format, fromUnixTime } from "date-fns";
 // import pubsub from "./pub-sub";
 // import "./dom-handler";
 
+const dialog = document.querySelector("dialog");
+const addressClickable = document.querySelector("#location>#address");
+
+addressClickable.addEventListener("click", () => {
+  dialog.showModal();
+});
+
 const testObj = JSON.parse(`{
     "queryCost": 1,
     "latitude": 26.8547,
