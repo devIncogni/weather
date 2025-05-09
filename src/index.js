@@ -12,13 +12,7 @@ import { format, fromUnixTime } from "date-fns";
 // import getWeatherData from "./api-handler";
 // import pubsub from "./pub-sub";
 // import "./dom-handler";
-
-const dialog = document.querySelector("dialog");
-const addressClickable = document.querySelector("#location>#address");
-
-addressClickable.addEventListener("click", () => {
-  dialog.showModal();
-});
+import "./dialog-handler";
 
 const testObj = JSON.parse(`{
     "queryCost": 1,
