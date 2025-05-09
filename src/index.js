@@ -12,7 +12,7 @@ import { format, fromUnixTime } from "date-fns";
 // import getWeatherData from "./api-handler";
 // import pubsub from "./pub-sub";
 // import "./dom-handler";
-import "./dialog-handler";
+import "./location-handler";
 
 const testObj = JSON.parse(`{
     "queryCost": 1,

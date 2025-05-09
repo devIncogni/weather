@@ -35,16 +35,14 @@ const dialogHandler = (async () => {
 
   const cityInput = document.querySelector("dialog #city");
   cityInput.addEventListener(`keydown`, (e) => {
-    console.log(e.key);
-
     if (e.key === "Enter") {
       currentLocation = cityInput.value;
       dialog.close();
       cityInput.value = "";
     }
-  });
 
-  console.log(currentLocation);
+    return { currentLocation };
+  });
 
   return { currentLocation };
 })();
