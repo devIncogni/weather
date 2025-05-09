@@ -94,7 +94,11 @@
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: auto 1fr;
     column-gap: 1.5rem;
+    align-self: center;
 
+    /* border: 1px solid black; */
+
+    height: 9rem;
     grid-column: -1/-2;
 }
 
