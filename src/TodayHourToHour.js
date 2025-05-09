@@ -1,7 +1,14 @@
 export default class TodayHourToHour {
-  constructor(timeInHourDisplay, iconDisplay, temperatureDisplay) {
-    this.hourDisplay = timeInHourDisplay;
+  constructor(iconDisplay, temperatureDisplay) {
     this.iconDisplay = iconDisplay;
     this.temperatureDisplay = temperatureDisplay;
+  }
+
+  setIcon(iconID) {
+    this.iconDisplay.src = "./clear-day.svg";
+  }
+
+  setTemperature(temp) {
+    this.temperatureDisplay.textContent = `${temp}°C`;
   }
 }
