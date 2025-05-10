@@ -24,6 +24,10 @@
     font-weight: 300;
 }
 
+#unit-select span {
+    cursor: pointer;
+}
+
 .selected-unit {
     font-weight: 600;
 }
