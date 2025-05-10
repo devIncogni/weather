@@ -8,11 +8,11 @@ body {
     justify-content: space-between;
 
     font-family: "Roboto Condensed", sans-serif;
-    /* color: white; */
-    /*     
-    background: url("./cloudy-weataher.jpg");
+    color: white;
+        
+    background: url("./02.png");
     background-size: 100%;
-    background-repeat: no-repeat; */
+    background-repeat: no-repeat;
 }
 
 #main-content {
@@ -29,8 +29,8 @@ body {
 }
 
 .acrylic {
-    background: rgba(0, 0, 0, 0.531);
-    backdrop-filter: blur(7px);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
 }
 
 dialog {

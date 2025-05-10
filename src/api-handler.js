@@ -21,7 +21,7 @@
 // Conditions
 // Description
 
-const key = "RSEN5BMDJKBLYVKZ9SXAY5EV8<>";
+const key = "RSEN5BMDJKBLYVKZ9SXAY5EV8";
 
 async function getWeatherData(location, unitGroup = "metric") {
   const sampleData = {
