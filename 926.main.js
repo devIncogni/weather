@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktemplate_repo_web_dev=self.webpackChunktemplate_repo_web_dev||[]).push([[926],{926:(e,p,s)=>{e.exports=s.p+"1e6a60591d181485d0de.svg"}}]);
