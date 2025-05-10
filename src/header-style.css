@@ -19,3 +19,11 @@
     font-weight: bolder;
     cursor: pointer;
 }
+
+#unit-select {
+    font-weight: 300;
+}
+
+.selected-unit {
+    font-weight: 600;
+}

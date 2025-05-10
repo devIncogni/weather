@@ -13,7 +13,7 @@ import weatherDomHandler from "./dom-handler";
 import locationHandler from "./location-handler";
 import unitGrpGetter from "./unit-group";
 
-const unit = unitGrpGetter.getUnit();
+let unit = unitGrpGetter.getUnit();
 let coordinates;
 
 let lastUsedLocation = coordinates;
@@ -50,13 +50,21 @@ submitLocationButton.addEventListener(`click`, () => {
 });
 
 document.querySelector("#unit-select").addEventListener("click", (e) => {
+  const metricSpan = document.querySelector("#metric");
+  const usSpan = document.querySelector("#us");
 
   switch (e.target.id) {
     case "metric":
       weatherDomHandler.renderFor(lastUsedLocation, "metric");
+      metricSpan.className = "celcius selected-unit";
+      usSpan.className = "fahrenheit";
+      unit = unitGrpGetter.getUnit();
       break;
     case "us":
       weatherDomHandler.renderFor(lastUsedLocation, "us");
+      metricSpan.className = "celcius";
+      usSpan.className = "fahrenheit selected-unit";
+      unit = unitGrpGetter.getUnit();
       break;
 
     default:
