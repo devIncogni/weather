@@ -6,13 +6,17 @@ export default class CurrentWeather {
     tempDisplay,
     iconDisplay,
     feelsLikeDisplay,
-    descriptionDisplay
+    descriptionDisplay,
+    sunriseDisplay,
+    sunsetDisplay
   ) {
     this.dateTimeDisplay = dateTimeDisplay;
     this.tempDisplay = tempDisplay;
     this.iconDisplay = iconDisplay;
     this.feelsLikeDisplay = feelsLikeDisplay;
     this.descriptionDisplay = descriptionDisplay;
+    this.sunriseDisplay = sunriseDisplay;
+    this.sunsetDisplay = sunsetDisplay;
   }
 
   setDateTime(unixEpoch) {
@@ -39,5 +43,13 @@ export default class CurrentWeather {
 
   setDescription(description) {
     this.descriptionDisplay.textContent = description;
+  }
+
+  setSunRise(riseTime) {
+    this.sunriseDisplay.textContent = `Sunrise: ${riseTime}`;
+  }
+
+  setSunSet(setTime) {
+    this.sunsetDisplay.textContent = `Sunset: ${setTime}`;
   }
 }

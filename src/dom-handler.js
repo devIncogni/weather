@@ -11,7 +11,9 @@ const currentWeather = new CurrentWeather(
   document.querySelector(".current-temperature .temperature"),
   document.querySelector(".icon-and-sunrise-sunset .current-weather-icon"),
   document.querySelector(".current-temperature .feels-like-data"),
-  document.querySelector(".current-temperature .description")
+  document.querySelector(".current-temperature .description"),
+  document.querySelector("#icon-and-sunrise-sunset .sunrise"),
+  document.querySelector("#icon-and-sunrise-sunset .sunset")
 );
 const moreDetails = new MoreDetails(
   document.querySelector(".more-details .wind-speed .more-details-data"),
@@ -182,6 +184,9 @@ const weatherDomHandler = (() => {
       unitGroup
     );
     currentWeather.setDescription(processedWeatherData.description);
+
+    currentWeather.setSunRise(processedWeatherData.currentConditions.sunrise);
+    currentWeather.setSunSet(processedWeatherData.currentConditions.sunset);
     // #endregion current weather settings
 
     // #region current weather more details settings
