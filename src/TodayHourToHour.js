@@ -10,7 +10,8 @@ export default class TodayHourToHour {
     });
   }
 
-  setTemperature(temp) {
-    this.temperatureDisplay.textContent = `${temp}°C`;
+  setTemperature(temp, unitGroup) {
+    this.temperatureDisplay.textContent =
+      unitGroup === "metric" ? `${temp}°C` : `${temp}°F`;
   }
 }

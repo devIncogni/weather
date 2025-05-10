@@ -20,14 +20,21 @@ export default class CurrentWeather {
     this.dateTimeDisplay.textContent = dateTime;
   }
 
-  setTemp(temp) {
+  setTemp(temp, unitGrp) {
     const temperatureString = temp >= 0 ? `+${temp}` : `-${temp}`;
-    this.tempDisplay.textContent = `${temperatureString}°C`;
+
+    this.tempDisplay.textContent =
+      unitGrp === "metric"
+        ? `${temperatureString}°C`
+        : `${temperatureString}°F`;
   }
 
-  setFeelsLike(temp) {
+  setFeelsLike(temp, unitGrp) {
     const temperatureString = temp >= 0 ? `+${temp}` : `-${temp}`;
-    this.feelsLikeDisplay.textContent = `${temperatureString}°C`;
+    this.feelsLikeDisplay.textContent =
+      unitGrp === "metric"
+        ? `${temperatureString}°C`
+        : `${temperatureString}°F`;
   }
 
   setDescription(description) {

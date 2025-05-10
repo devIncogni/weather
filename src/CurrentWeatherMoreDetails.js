@@ -11,8 +11,9 @@ export default class MoreDetails {
     this.precipitationProbabilityDisplay = precipitationProbabilityDisplay;
   }
 
-  setWindSpeed(speed) {
-    this.windSpeedDisplay.textContent = `${speed}km/h`;
+  setWindSpeed(speed, unitGroup) {
+    this.windSpeedDisplay.textContent =
+      unitGroup === "metric" ? `${speed}km/h` : `${speed}m/h`;
   }
 
   setHumidity(humidity) {

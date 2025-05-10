@@ -167,19 +167,28 @@ const weatherDomHandler = (() => {
       unitGroup
     );
 
+    console.log(processedWeatherData);
+
     // #region current weather settings
     currentWeather.setDateTime(
       processedWeatherData.currentConditions.datetimeEpoch
     );
-    currentWeather.setTemp(processedWeatherData.currentConditions.temp);
+    currentWeather.setTemp(
+      processedWeatherData.currentConditions.temp,
+      unitGroup
+    );
     currentWeather.setFeelsLike(
-      processedWeatherData.currentConditions.feelslike
+      processedWeatherData.currentConditions.feelslike,
+      unitGroup
     );
     currentWeather.setDescription(processedWeatherData.description);
     // #endregion current weather settings
 
     // #region current weather more details settings
-    moreDetails.setWindSpeed(processedWeatherData.currentConditions.windspeed);
+    moreDetails.setWindSpeed(
+      processedWeatherData.currentConditions.windspeed,
+      unitGroup
+    );
     moreDetails.setHumidity(processedWeatherData.currentConditions.humidity);
     moreDetails.setPressure(processedWeatherData.currentConditions.pressure);
     moreDetails.setPrecipitationProbability(
@@ -193,7 +202,7 @@ const weatherDomHandler = (() => {
       const currentHour = hour[key];
       const { temp, icon } = processedWeatherData.dayData[0].hours[key];
 
-      currentHour.setTemperature(temp);
+      currentHour.setTemperature(temp, unitGroup);
       currentHour.setIcon(icon);
     });
     // #endregion current weather hour to hour settings
@@ -210,13 +219,13 @@ const weatherDomHandler = (() => {
 
       currentDay.setDayName(dayName);
       currentDay.setDateDisplay(currentDate);
-      currentDay.setMinTemp(tempmin);
-      currentDay.setMaxTemp(tempmax);
+      currentDay.setMinTemp(tempmin, unitGroup);
+      currentDay.setMaxTemp(tempmax, unitGroup);
       currentDay.setCondition(conditions);
       currentDay.setIcon(icon);
     });
   };
-    // #endregion day to day settings
+  // #endregion day to day settings
 
   return { renderFor };
 })();

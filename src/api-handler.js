@@ -5840,15 +5840,15 @@ export default async function getProcessedWeatherData(location, unitGroup) {
       }
     }
 
-    console.log({
-      latitude,
-      longitude,
-      resolvedAddress,
-      description,
-      currentConditions,
-      alerts,
-      dayData,
-    });
+    // console.log({
+    //   latitude,
+    //   longitude,
+    //   resolvedAddress,
+    //   description,
+    //   currentConditions,
+    //   alerts,
+    //   dayData,
+    // });
 
     return {
       latitude,
