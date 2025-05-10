@@ -12,7 +12,7 @@ export default class MoreDetails {
   }
 
   setWindSpeed(speed) {
-    this.windSpeedDisplay.textContent = `${speed}m/s`;
+    this.windSpeedDisplay.textContent = `${speed}km/h`;
   }
 
   setHumidity(humidity) {
@@ -20,7 +20,7 @@ export default class MoreDetails {
   }
 
   setPressure(pressure) {
-    this.pressureDisplay.textContent = `${pressure}bar`;
+    this.pressureDisplay.textContent = `${pressure}mb`;
   }
 
   setPrecipitationProbability(precipitationProbability) {

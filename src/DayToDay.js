@@ -24,11 +24,11 @@ export default class WeekDayToDay {
   }
 
   setMinTemp(minTemp) {
-    this.minTempDisplay.textContent = minTemp;
+    this.minTempDisplay.textContent = `${minTemp}°C`;
   }
 
   setMaxTemp(maxTemp) {
-    this.maxTempDisplay.textContent = maxTemp;
+    this.maxTempDisplay.textContent = `${maxTemp}°C`;
   }
 
   setIcon(iconID) {

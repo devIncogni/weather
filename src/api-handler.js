@@ -5789,7 +5789,7 @@ async function getWeatherData(location) {
 
   try {
     const response = await fetch(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&elements=datetime%2CdatetimeEpoch%2Cname%2Caddress%2CresolvedAddress%2Clatitude%2Clongitude%2Ctempmax%2Ctempmin%2Ctemp%2Cfeelslike%2Chumidity%2Cprecipprob%2Cpreciptype%2Cwindspeed%2Cwinddir%2Cpressure%2Cvisibility%2Csunrise%2Csunset%2Cconditions%2Cdescription%2Cicon&include=current%2Calerts%2Cdays%2Chours%2Cevents%2Cobs%2Cremote%2Cfcst&key=${key}&contentType=json`,
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&iconSet=icons2&elements=datetime%2CdatetimeEpoch%2Cname%2Caddress%2CresolvedAddress%2Clatitude%2Clongitude%2Ctempmax%2Ctempmin%2Ctemp%2Cfeelslike%2Chumidity%2Cprecipprob%2Cpreciptype%2Cwindspeed%2Cwinddir%2Cpressure%2Cvisibility%2Csunrise%2Csunset%2Cconditions%2Cdescription%2Cicon&include=current%2Calerts%2Cdays%2Chours%2Cevents%2Cobs%2Cremote%2Cfcst&key=${key}&contentType=json`,
       {
         mode: "cors",
         method: "GET",
