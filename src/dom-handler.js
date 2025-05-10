@@ -1,3 +1,4 @@
+import { format, fromUnixTime } from "date-fns";
 import getProcessedWeatherData from "./api-handler";
 import CurrentWeather from "./CurrentWeather";
 import MoreDetails from "./CurrentWeatherMoreDetails";
@@ -57,13 +58,104 @@ const hour = {
 };
 
 const days = {
-  0: new WeekDayToDay(),
-  1: new WeekDayToDay(),
-  2: new WeekDayToDay(),
-  3: new WeekDayToDay(),
-  4: new WeekDayToDay(),
-  5: new WeekDayToDay(),
-  6: new WeekDayToDay(),
+  0: new WeekDayToDay(
+    document.querySelector("#seven-days-forecast .day-1 .week-day"),
+    document.querySelector("#seven-days-forecast .day-1 .date"),
+    document.querySelector(
+      "#seven-days-forecast .day-1 .min .seven-days-min-max-data"
+    ),
+    document.querySelector(
+      "#seven-days-forecast .day-1 .max .seven-days-min-max-data"
+    ),
+    document.querySelector("#seven-days-forecast .day-1 .icon-condition img"),
+    document.querySelector(
+      "#seven-days-forecast .day-1 .icon-condition .condition"
+    )
+  ),
+  1: new WeekDayToDay(
+    document.querySelector("#seven-days-forecast .day-2 .week-day"),
+    document.querySelector("#seven-days-forecast .day-2 .date"),
+    document.querySelector(
+      "#seven-days-forecast .day-2 .min .seven-days-min-max-data"
+    ),
+    document.querySelector(
+      "#seven-days-forecast .day-2 .max .seven-days-min-max-data"
+    ),
+    document.querySelector("#seven-days-forecast .day-2 .icon-condition img"),
+    document.querySelector(
+      "#seven-days-forecast .day-2 .icon-condition .condition"
+    )
+  ),
+  2: new WeekDayToDay(
+    document.querySelector("#seven-days-forecast .day-3 .week-day"),
+    document.querySelector("#seven-days-forecast .day-3 .date"),
+    document.querySelector(
+      "#seven-days-forecast .day-3 .min .seven-days-min-max-data"
+    ),
+    document.querySelector(
+      "#seven-days-forecast .day-3 .max .seven-days-min-max-data"
+    ),
+    document.querySelector("#seven-days-forecast .day-3 .icon-condition img"),
+    document.querySelector(
+      "#seven-days-forecast .day-3 .icon-condition .condition"
+    )
+  ),
+  3: new WeekDayToDay(
+    document.querySelector("#seven-days-forecast .day-4 .week-day"),
+    document.querySelector("#seven-days-forecast .day-4 .date"),
+    document.querySelector(
+      "#seven-days-forecast .day-4 .min .seven-days-min-max-data"
+    ),
+    document.querySelector(
+      "#seven-days-forecast .day-4 .max .seven-days-min-max-data"
+    ),
+    document.querySelector("#seven-days-forecast .day-4 .icon-condition img"),
+    document.querySelector(
+      "#seven-days-forecast .day-4 .icon-condition .condition"
+    )
+  ),
+  4: new WeekDayToDay(
+    document.querySelector("#seven-days-forecast .day-5 .week-day"),
+    document.querySelector("#seven-days-forecast .day-5 .date"),
+    document.querySelector(
+      "#seven-days-forecast .day-5 .min .seven-days-min-max-data"
+    ),
+    document.querySelector(
+      "#seven-days-forecast .day-5 .max .seven-days-min-max-data"
+    ),
+    document.querySelector("#seven-days-forecast .day-5 .icon-condition img"),
+    document.querySelector(
+      "#seven-days-forecast .day-5 .icon-condition .condition"
+    )
+  ),
+  5: new WeekDayToDay(
+    document.querySelector("#seven-days-forecast .day-6 .week-day"),
+    document.querySelector("#seven-days-forecast .day-6 .date"),
+    document.querySelector(
+      "#seven-days-forecast .day-6 .min .seven-days-min-max-data"
+    ),
+    document.querySelector(
+      "#seven-days-forecast .day-6 .max .seven-days-min-max-data"
+    ),
+    document.querySelector("#seven-days-forecast .day-6 .icon-condition img"),
+    document.querySelector(
+      "#seven-days-forecast .day-6 .icon-condition .condition"
+    )
+  ),
+  6: new WeekDayToDay(
+    document.querySelector("#seven-days-forecast .day-7 .week-day"),
+    document.querySelector("#seven-days-forecast .day-7 .date"),
+    document.querySelector(
+      "#seven-days-forecast .day-7 .min .seven-days-min-max-data"
+    ),
+    document.querySelector(
+      "#seven-days-forecast .day-7 .max .seven-days-min-max-data"
+    ),
+    document.querySelector("#seven-days-forecast .day-7 .icon-condition img"),
+    document.querySelector(
+      "#seven-days-forecast .day-7 .icon-condition .condition"
+    )
+  ),
 };
 
 // let processedWeatherData;
@@ -99,11 +191,32 @@ const weatherDomHandler = (async () => {
   const hourToHourKeys = Object.keys(hour);
   hourToHourKeys.forEach((key) => {
     const currentHour = hour[key];
-    const { temp } = processedWeatherData.dayData[0].hours[key / 3];
-    
+    const { temp, icon } = processedWeatherData.dayData[0].hours[key / 3];
+
     currentHour.setTemperature(temp);
+    currentHour.setIcon(icon);
   });
   // #endregion current weather hour to hour settings
+
+  // #region day to day settings
+  const dayToDayKeys = Object.keys(days);
+  dayToDayKeys.forEach((key) => {
+    const currentDay = days[key];
+    const { datetimeEpoch, tempmax, tempmin, conditions, icon } =
+      processedWeatherData.dayData[key];
+
+    const dayName = format(fromUnixTime(datetimeEpoch), "iiii");
+    const currentDate = format(fromUnixTime(datetimeEpoch), "d MMMM");
+
+    currentDay.setDayName(dayName);
+    currentDay.setDateDisplay(currentDate);
+    currentDay.setMinTemp(tempmin);
+    currentDay.setMaxTemp(tempmax);
+    currentDay.setCondition(conditions);
+    currentDay.setIcon(icon);
+  });
+
+  // #endregion day to day settings
 })();
 
 export default weatherDomHandler;

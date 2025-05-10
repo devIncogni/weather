@@ -19,7 +19,7 @@ export default class WeekDayToDay {
     this.dayNameDisplay.textContent = day;
   }
 
-  setdateDisplay(date) {
+  setDateDisplay(date) {
     this.dateDisplay.textContent = date;
   }
 
