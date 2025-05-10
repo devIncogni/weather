@@ -24,7 +24,7 @@ export default class CurrentWeather {
       this.iconDisplay.src = icon.default;
     });
   }
-  
+
   setDateTime(unixEpoch) {
     const dateTime = format(fromUnixTime(unixEpoch), "iii dd MMM HH:mm");
     this.dateTimeDisplay.textContent = dateTime;

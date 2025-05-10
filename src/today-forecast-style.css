@@ -19,7 +19,7 @@
 }
 
 .current-weather-icon>img {
-    width: 5rem;
+    width: 10rem;
     /* min-width: 5rem; */
 }
 
@@ -115,7 +115,7 @@
 }
 
 .hour-icon>img {
-    width: 2.5rem;
+    width: 5rem;
 }
 
 .time-description {
