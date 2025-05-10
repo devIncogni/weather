@@ -5,7 +5,9 @@ export default class TodayHourToHour {
   }
 
   setIcon(iconID) {
-    this.iconDisplay.src = "./clear-day.svg";
+    import("./clear-day.svg").then((icon) => {
+      this.iconDisplay.src = icon.default;
+    });
   }
 
   setTemperature(temp) {

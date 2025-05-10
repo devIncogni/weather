@@ -11,7 +11,7 @@ export default class WeekDayToDay {
     this.dateDisplay = dateDisplay;
     this.minTempDisplay = minTempDisplay;
     this.maxTempDisplay = maxTempDisplay;
-    this.iconDislay = iconDislay;
+    this.iconDisplay = iconDislay;
     this.conditionDisplay = conditionDisplay;
   }
 
@@ -32,7 +32,9 @@ export default class WeekDayToDay {
   }
 
   setIcon(iconID) {
-    this.iconDislay.src = "./clear-day.svg";
+    import("./clear-day.svg").then((icon) => {
+      this.iconDisplay.src = icon.default;
+    });
   }
 
   setCondition(condition) {

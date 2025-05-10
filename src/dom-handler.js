@@ -4,7 +4,7 @@ import CurrentWeather from "./CurrentWeather";
 import MoreDetails from "./CurrentWeatherMoreDetails";
 import WeekDayToDay from "./DayToDay";
 import TodayHourToHour from "./TodayHourToHour";
-import WeatherHomePage from "./WeatherHomePage";
+// import WeatherHomePage from "./WeatherHomePage";
 import locationHandler from "./location-handler";
 
 const currentWeather = new CurrentWeather(
@@ -20,7 +20,7 @@ const moreDetails = new MoreDetails(
   document.querySelector(".more-details .pressure .more-details-data"),
   document.querySelector(".more-details .precipitation .more-details-data")
 );
-const weatherHomePage = new WeatherHomePage();
+// const weatherHomePage = new WeatherHomePage();
 
 const hour = {
   0: new TodayHourToHour(
@@ -157,12 +157,6 @@ const days = {
     )
   ),
 };
-
-// let processedWeatherData;
-// getProcessedWeatherData("Lucknow").then((data) => {
-//   processedWeatherData = data;
-//   console.log(processedWeatherData);
-// });
 
 const weatherDomHandler = (async () => {
   const processedWeatherData = await getProcessedWeatherData(
