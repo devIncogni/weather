@@ -28,18 +28,18 @@ export default class WeekDayToDay {
       unitGroup === "metric" ? `${minTemp}°C` : `${minTemp}°F`;
   }
 
-  setMaxTemp(maxTemp,unitGroup) {
+  setMaxTemp(maxTemp, unitGroup) {
     this.maxTempDisplay.textContent =
       unitGroup === "metric" ? `${maxTemp}°C` : `${maxTemp}°F`;
   }
 
   setIcon(iconID) {
-    import("./clear-day.svg").then((icon) => {
+    import(`./weather-icons/${iconID}.svg`).then((icon) => {
       this.iconDisplay.src = icon.default;
     });
   }
 
   setCondition(condition) {
-    this.conditionDisplay = condition;
+    this.conditionDisplay.textContent = condition;
   }
 }

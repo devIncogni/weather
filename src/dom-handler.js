@@ -14,7 +14,7 @@ const homePage = new WeatherHomePage(
 const currentWeather = new CurrentWeather(
   document.querySelector(".current-temperature .date-time"),
   document.querySelector(".current-temperature .temperature"),
-  document.querySelector(".icon-and-sunrise-sunset .current-weather-icon"),
+  document.querySelector("#icon-and-sunrise-sunset .current-weather-icon img"),
   document.querySelector(".current-temperature .feels-like-data"),
   document.querySelector(".current-temperature .description"),
   document.querySelector("#icon-and-sunrise-sunset .sunrise"),
@@ -198,6 +198,8 @@ const weatherDomHandler = (() => {
 
     currentWeather.setSunRise(processedWeatherData.currentConditions.sunrise);
     currentWeather.setSunSet(processedWeatherData.currentConditions.sunset);
+
+    currentWeather.setIcon(processedWeatherData.currentConditions.icon)
     // #endregion current weather settings
 
     // #region current weather more details settings
