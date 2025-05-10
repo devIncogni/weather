@@ -9,6 +9,8 @@ import "./seven-day-forecast-style.css";
 // import { format, fromUnixTime } from "date-fns";
 
 // JS Imports
-import "./dom-handler";
+import weatherDomHandler from "./dom-handler";
+
+weatherDomHandler.renderFor("Lucknow", "metric");
 
 // console.log(format(fromUnixTime(1745773200), "iii dd MMM HH:mm"));

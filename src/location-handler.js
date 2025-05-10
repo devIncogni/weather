@@ -12,7 +12,7 @@ async function getLocation() {
 }
 
 const locationHandler = (async () => {
-  async function getGeoLocation() {
+  const getGeoLocation = async () => {
     let currentLocation = "";
     if (!navigator.geolocation) {
       console.log("Geolocation is not supported by your browser");
@@ -26,34 +26,11 @@ const locationHandler = (async () => {
       }
     }
     return currentLocation;
-  }
+  };
 
-  let currentLocation = await getGeoLocation();
+  const getFormInputLocation = () => document.querySelector("dialog #city").value;
 
-  const dialog = document.querySelector("dialog");
-  const addressClickable = document.querySelector("#location>#address");
-  const cityInput = document.querySelector("dialog #city");
-  const submitLocationButton = document.querySelector("#submit-dialog-form");
-
-  addressClickable.addEventListener("click", () => {
-    dialog.showModal();
-  });
-
-  cityInput.addEventListener(`keydown`, (e) => {
-    if (e.key === "Enter") {
-      currentLocation = cityInput.value;
-      dialog.close();
-      cityInput.value = "";
-    }
-  });
-
-  submitLocationButton.addEventListener(`click`, () => {
-    currentLocation = cityInput.value || currentLocation;
-    dialog.close();
-    cityInput.value = "";
-  });
-
-  return { currentLocation, getGeoLocation };
+  return { getGeoLocation, getFormInputLocation };
 })();
 
 export default locationHandler;

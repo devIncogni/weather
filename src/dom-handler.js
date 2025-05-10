@@ -5,7 +5,6 @@ import MoreDetails from "./CurrentWeatherMoreDetails";
 import WeekDayToDay from "./DayToDay";
 import TodayHourToHour from "./TodayHourToHour";
 // import WeatherHomePage from "./WeatherHomePage";
-import locationHandler from "./location-handler";
 
 const currentWeather = new CurrentWeather(
   document.querySelector(".current-temperature .date-time"),
@@ -158,59 +157,68 @@ const days = {
   ),
 };
 
-const weatherDomHandler = (async () => {
-  const processedWeatherData = await getProcessedWeatherData(
-    (await locationHandler).currentLocation
-  );
+const weatherDomHandler = (() => {
+  const renderFor = async (location, unitGrp) => {
+    const weatherLocation = location;
+    const unitGroup = unitGrp;
 
-  // #region current weather settings
-  currentWeather.setDateTime(
-    processedWeatherData.currentConditions.datetimeEpoch
-  );
-  currentWeather.setTemp(processedWeatherData.currentConditions.temp);
-  currentWeather.setFeelsLike(processedWeatherData.currentConditions.feelslike);
-  currentWeather.setDescription(processedWeatherData.description);
-  // #endregion current weather settings
+    const processedWeatherData = await getProcessedWeatherData(
+      weatherLocation,
+      unitGroup
+    );
 
-  // #region current weather more details settings
-  moreDetails.setWindSpeed(processedWeatherData.currentConditions.windspeed);
-  moreDetails.setHumidity(processedWeatherData.currentConditions.humidity);
-  moreDetails.setPressure(processedWeatherData.currentConditions.pressure);
-  moreDetails.setPrecipitationProbability(
-    processedWeatherData.currentConditions.precipprob
-  );
-  // #endregion current weather more details settings
+    // #region current weather settings
+    currentWeather.setDateTime(
+      processedWeatherData.currentConditions.datetimeEpoch
+    );
+    currentWeather.setTemp(processedWeatherData.currentConditions.temp);
+    currentWeather.setFeelsLike(
+      processedWeatherData.currentConditions.feelslike
+    );
+    currentWeather.setDescription(processedWeatherData.description);
+    // #endregion current weather settings
 
-  // #region current weather hour to hour settings
-  const hourToHourKeys = Object.keys(hour);
-  hourToHourKeys.forEach((key) => {
-    const currentHour = hour[key];
-    const { temp, icon } = processedWeatherData.dayData[0].hours[key / 3];
+    // #region current weather more details settings
+    moreDetails.setWindSpeed(processedWeatherData.currentConditions.windspeed);
+    moreDetails.setHumidity(processedWeatherData.currentConditions.humidity);
+    moreDetails.setPressure(processedWeatherData.currentConditions.pressure);
+    moreDetails.setPrecipitationProbability(
+      processedWeatherData.currentConditions.precipprob
+    );
+    // #endregion current weather more details settings
 
-    currentHour.setTemperature(temp);
-    currentHour.setIcon(icon);
-  });
-  // #endregion current weather hour to hour settings
+    // #region current weather hour to hour settings
+    const hourToHourKeys = Object.keys(hour);
+    hourToHourKeys.forEach((key) => {
+      const currentHour = hour[key];
+      const { temp, icon } = processedWeatherData.dayData[0].hours[key / 3];
 
-  // #region day to day settings
-  const dayToDayKeys = Object.keys(days);
-  dayToDayKeys.forEach((key) => {
-    const currentDay = days[key];
-    const { datetimeEpoch, tempmax, tempmin, conditions, icon } =
-      processedWeatherData.dayData[key];
+      currentHour.setTemperature(temp);
+      currentHour.setIcon(icon);
+    });
+    // #endregion current weather hour to hour settings
 
-    const dayName = format(fromUnixTime(datetimeEpoch), "iiii");
-    const currentDate = format(fromUnixTime(datetimeEpoch), "d MMMM");
+    // #region day to day settings
+    const dayToDayKeys = Object.keys(days);
+    dayToDayKeys.forEach((key) => {
+      const currentDay = days[key];
+      const { datetimeEpoch, tempmax, tempmin, conditions, icon } =
+        processedWeatherData.dayData[key];
 
-    currentDay.setDayName(dayName);
-    currentDay.setDateDisplay(currentDate);
-    currentDay.setMinTemp(tempmin);
-    currentDay.setMaxTemp(tempmax);
-    currentDay.setCondition(conditions);
-    currentDay.setIcon(icon);
-  });
+      const dayName = format(fromUnixTime(datetimeEpoch), "iiii");
+      const currentDate = format(fromUnixTime(datetimeEpoch), "d MMMM");
 
-  // #endregion day to day settings
+      currentDay.setDayName(dayName);
+      currentDay.setDateDisplay(currentDate);
+      currentDay.setMinTemp(tempmin);
+      currentDay.setMaxTemp(tempmax);
+      currentDay.setCondition(conditions);
+      currentDay.setIcon(icon);
+    });
+  };
+    // #endregion day to day settings
+
+  return { renderFor };
 })();
 
 export default weatherDomHandler;
