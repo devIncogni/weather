@@ -73,6 +73,9 @@
     flex-direction: column;
     justify-content: flex-end;
     gap: 0.25rem;
+
+    height: 9rem;
+    align-self: center;
 }
 
 .more-details>.title {
