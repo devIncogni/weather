@@ -191,7 +191,7 @@ const weatherDomHandler = (() => {
     const hourToHourKeys = Object.keys(hour);
     hourToHourKeys.forEach((key) => {
       const currentHour = hour[key];
-      const { temp, icon } = processedWeatherData.dayData[0].hours[key / 3];
+      const { temp, icon } = processedWeatherData.dayData[0].hours[key];
 
       currentHour.setTemperature(temp);
       currentHour.setIcon(icon);

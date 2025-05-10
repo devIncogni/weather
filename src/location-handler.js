@@ -11,7 +11,7 @@ async function getLocation() {
   });
 }
 
-const locationHandler = (async () => {
+const locationHandler = (() => {
   const getGeoLocation = async () => {
     let currentLocation = "";
     if (!navigator.geolocation) {

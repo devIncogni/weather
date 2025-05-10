@@ -23,7 +23,7 @@
 
 const key = "RSEN5BMDJKBLYVKZ9SXAY5EV8<>";
 
-async function getWeatherData(location, unitGroup = 'metric') {
+async function getWeatherData(location, unitGroup = "metric") {
   const sampleData = {
     queryCost: 1,
     latitude: 26.8547,
@@ -5839,6 +5839,16 @@ export default async function getProcessedWeatherData(location, unitGroup) {
         dayData.push({ datetimeEpoch, tempmin, tempmax, conditions, icon });
       }
     }
+
+    console.log({
+      latitude,
+      longitude,
+      resolvedAddress,
+      description,
+      currentConditions,
+      alerts,
+      dayData,
+    });
 
     return {
       latitude,
