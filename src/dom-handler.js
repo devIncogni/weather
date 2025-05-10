@@ -4,7 +4,12 @@ import CurrentWeather from "./CurrentWeather";
 import MoreDetails from "./CurrentWeatherMoreDetails";
 import WeekDayToDay from "./DayToDay";
 import TodayHourToHour from "./TodayHourToHour";
-// import WeatherHomePage from "./WeatherHomePage";
+import WeatherHomePage from "./WeatherHomePage";
+
+const homePage = new WeatherHomePage(
+  "",
+  document.querySelector("#location #address")
+);
 
 const currentWeather = new CurrentWeather(
   document.querySelector(".current-temperature .date-time"),
@@ -170,6 +175,12 @@ const weatherDomHandler = (() => {
     );
 
     console.log(processedWeatherData);
+
+    // #region current weather settings
+
+    homePage.setCurrentLocation(processedWeatherData.resolvedAddress);
+
+    // #endregion current weather settings
 
     // #region current weather settings
     currentWeather.setDateTime(
